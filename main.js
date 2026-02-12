@@ -169,6 +169,24 @@ function setupEventListeners() {
             const num = btn.dataset.num;
             fillNumber(num);
         });
+
+        // Highlight same numbers on hover
+        btn.addEventListener('mouseenter', () => {
+            const num = btn.dataset.num;
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => {
+                if (cell.innerText === num) {
+                    cell.classList.add('highlight-same-number');
+                }
+            });
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => {
+                cell.classList.remove('highlight-same-number');
+            });
+        });
     });
 
     eraseBtn.addEventListener('click', () => {

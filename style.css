@@ -118,6 +118,15 @@ p {
     box-shadow: inset 0 0 10px rgba(255, 154, 158, 0.3);
 }
 
+.cell.highlight-same-number {
+    background-color: #ffd54f;
+    color: #fff;
+    transform: scale(1.1);
+    z-index: 10;
+    box-shadow: 0 0 15px rgba(255, 213, 79, 0.6);
+    border-radius: 12px;
+}
+
 .cell.initial {
     color: #8d6e63;
     background-color: #fff9fa;
