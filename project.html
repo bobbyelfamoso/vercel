@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Chat Mignon 🐱</title>
+    <link rel="stylesheet" href="project.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Sudoku Chat 🐾</h1>
+            <p>Remplis la grille avec amour ! 💖</p>
+        </header>
+
+        <div class="game-area">
+            <div id="sudoku-board"></div>
+
+            <div class="controls">
+                <div class="numpad">
+                    <button class="num-btn" data-num="1">1</button>
+                    <button class="num-btn" data-num="2">2</button>
+                    <button class="num-btn" data-num="3">3</button>
+                    <button class="num-btn" data-num="4">4</button>
+                    <button class="num-btn" data-num="5">5</button>
+                    <button class="num-btn" data-num="6">6</button>
+                    <button class="num-btn" data-num="7">7</button>
+                    <button class="num-btn" data-num="8">8</button>
+                    <button class="num-btn" data-num="9">9</button>
+                    <button class="num-btn action-btn" id="erase-btn">🧹</button>
+                </div>
+
+                <div class="game-actions">
+                    <button id="new-game-btn">Nouveau Jeu 🐱</button>
+                    <button id="solve-btn">Solution 💡</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cat-decoration left-cat">
+            <div class="cat">
+                <div class="ears"></div>
+                <div class="face">
+                    <div class="eyes"></div>
+                    <div class="nose"></div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cat-decoration right-cat">
+            <div class="cat sleeping">
+                <div class="ears"></div>
+                <div class="face">
+                    <div class="eyes"></div>
+                    <div class="nose"></div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal de victoire -->
+    <div id="win-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Bravo ! 🎉</h2>
+            <p>Tu es un génie des chats ! 😻</p>
+            <button id="close-modal">Miaou !</button>
+        </div>
+    </div>
+
+    <script src="project.js"></script>
+</body>
+
+</html>
