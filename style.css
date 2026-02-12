@@ -273,13 +273,48 @@ button:hover::before {
 }
 
 .cat {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    /* Slightly larger */
+    height: 140px;
     background-color: #ffccbc;
     border-radius: 50%;
     position: relative;
-    border: 4px solid #fff;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 6px solid #fff;
+    box-shadow: 0 5px 25px rgba(255, 154, 158, 0.3);
+    transition: all 0.5s ease;
+}
+
+/* Kawaii Sparkles around the cats */
+.cat-decoration::before,
+.cat-decoration::after {
+    content: '✨';
+    position: absolute;
+    font-size: 1.5rem;
+    animation: sparkle 2s infinite alternate;
+    z-index: 10;
+}
+
+.cat-decoration::before {
+    top: -20px;
+    left: 10px;
+}
+
+.cat-decoration::after {
+    bottom: 10px;
+    right: -20px;
+    animation-delay: 1s;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.2) rotate(20deg);
+        opacity: 1;
+    }
 }
 
 .ears {
@@ -312,10 +347,10 @@ button:hover::before {
 
 .face {
     position: absolute;
-    top: 35px;
+    top: 45px;
     left: 25px;
-    width: 70px;
-    height: 50px;
+    width: 90px;
+    height: 60px;
 }
 
 .eyes::before,
@@ -323,19 +358,106 @@ button:hover::before {
     content: '';
     position: absolute;
     top: 0;
-    width: 14px;
-    height: 14px;
+    width: 22px;
+    /* Bigger eyes */
+    height: 22px;
     background-color: #5d4037;
     border-radius: 50%;
     animation: blink 4s infinite;
+    box-shadow: inset -2px -2px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Eye sparkles */
+.eyes::before::after,
+.eyes::after::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+/* We need to use background radial-gradients for sparkles because ::before::after isn't valid */
+.eyes::before,
+.eyes::after {
+    background: radial-gradient(circle at 35% 35%, white 15%, transparent 20%),
+        radial-gradient(circle at 20% 50%, white 5%, transparent 10%),
+        #5d4037;
 }
 
 .eyes::before {
-    left: 10px;
+    left: 5px;
 }
 
 .eyes::after {
-    right: 10px;
+    right: 5px;
+}
+
+/* Sleeping Cat Eye */
+.cat.sleeping .eyes::before,
+.cat.sleeping .eyes::after {
+    background: transparent;
+    height: 10px;
+    width: 20px;
+    border-bottom: 4px solid #5d4037;
+    border-radius: 0 0 15px 15px;
+    animation: none;
+    top: 5px;
+}
+
+.blush {
+    position: absolute;
+    top: 25px;
+    width: 100%;
+}
+
+.blush::before,
+.blush::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 10px;
+    background-color: rgba(255, 138, 128, 0.4);
+    border-radius: 50%;
+    filter: blur(2px);
+}
+
+.blush::before {
+    left: 0px;
+}
+
+.blush::after {
+    right: 0px;
+}
+
+.whiskers {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+}
+
+.whiskers::before,
+.whiskers::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 1px;
+    background-color: rgba(93, 64, 55, 0.3);
+}
+
+.whiskers::before {
+    left: -15px;
+    box-shadow: 0 6px 0 rgba(93, 64, 55, 0.3), 0 -6px 0 rgba(93, 64, 55, 0.3);
+    transform: rotate(10deg);
+}
+
+.whiskers::after {
+    right: -15px;
+    box-shadow: 0 6px 0 rgba(93, 64, 55, 0.3), 0 -6px 0 rgba(93, 64, 55, 0.3);
+    transform: rotate(-10deg);
 }
 
 .nose {
@@ -350,8 +472,8 @@ button:hover::before {
 
 .mouth {
     position: absolute;
-    top: 30px;
-    left: 28px;
+    top: 35px;
+    left: 38px;
     width: 14px;
     height: 8px;
     border-bottom: 2px solid #5d4037;
@@ -359,13 +481,14 @@ button:hover::before {
 }
 
 .mouth::before {
-    content: '';
+    content: 'w';
     position: absolute;
-    left: -14px;
-    width: 14px;
-    height: 8px;
-    border-bottom: 2px solid #5d4037;
-    border-radius: 0 0 10px 10px;
+    left: -8px;
+    top: -12px;
+    font-size: 1.2rem;
+    color: #5d4037;
+    font-family: 'Quicksand', sans-serif;
+    border: none;
 }
 
 /* Animations */
