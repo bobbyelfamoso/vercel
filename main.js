@@ -135,33 +135,65 @@ function renderBoard() {
 function fillNumber(num) {
     if (!selectedCell || selectedCell.classList.contains('initial')) return;
 
+    const index = parseInt(selectedCell.dataset.index);
+    const numInt = parseInt(num);
+
+    // Place the number temporarily to check for conflicts
+    const originalText = selectedCell.innerText;
     selectedCell.innerText = num;
+
     selectedCell.classList.add('user-input');
     selectedCell.classList.remove('error');
     selectedCell.classList.add('pop'); // Add pop animation on input
 
-    const index = parseInt(selectedCell.dataset.index);
-    if (parseInt(num) !== solution[index]) {
+    // Check for "Sudoku conflicts" in the current board state
+    if (hasConflict(numInt, index)) {
         selectedCell.classList.add('error');
         // Shake animation reset
         selectedCell.style.animation = 'none';
         selectedCell.offsetHeight; /* trigger reflow */
         selectedCell.style.animation = null;
-    } else {
-        // Correct input fun
-        confetti({
-            particleCount: 15,
-            spread: 30,
-            origin: { y: 0.6, x: 0.5 },
-            gravity: 2,
-            scalar: 0.5,
-            colors: ['#ff9a9e', '#fad0c4', '#fff']
-        });
     }
 
     setTimeout(() => selectedCell.classList.remove('pop'), 200);
 
     checkWin();
+}
+
+function hasConflict(num, index) {
+    const cells = document.querySelectorAll('.cell');
+    const row = Math.floor(index / 9);
+    const col = index % 9;
+
+    // Check row
+    for (let c = 0; c < 9; c++) {
+        const targetIndex = row * 9 + c;
+        if (targetIndex !== index) {
+            if (parseInt(cells[targetIndex].innerText) === num) return true;
+        }
+    }
+
+    // Check col
+    for (let r = 0; r < 9; r++) {
+        const targetIndex = r * 9 + col;
+        if (targetIndex !== index) {
+            if (parseInt(cells[targetIndex].innerText) === num) return true;
+        }
+    }
+
+    // Check 3x3 box
+    const startRow = Math.floor(row / 3) * 3;
+    const startCol = Math.floor(col / 3) * 3;
+    for (let r = 0; r < 3; r++) {
+        for (let c = 0; c < 3; c++) {
+            const targetIndex = (startRow + r) * 9 + (startCol + c);
+            if (targetIndex !== index) {
+                if (parseInt(cells[targetIndex].innerText) === num) return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 function setupEventListeners() {
