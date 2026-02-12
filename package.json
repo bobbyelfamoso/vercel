@@ -1,7 +1,7 @@
 {
   "name": "vercel",
   "version": "1.0.0",
-  "main": "project.js",
+  "main": "main.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/bobbyelfamoso/vercel#readme",
   "description": "",
-  "devDependencies": {
+  "dependencies": {
     "canvas-confetti": "^1.9.4",
     "vite": "^7.3.1"
   }
