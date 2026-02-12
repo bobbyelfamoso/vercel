@@ -1,0 +1,26 @@
+{
+  "name": "vercel",
+  "version": "1.0.0",
+  "main": "project.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbyelfamoso/vercel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bobbyelfamoso/vercel/issues"
+  },
+  "homepage": "https://github.com/bobbyelfamoso/vercel#readme",
+  "description": "",
+  "devDependencies": {
+    "canvas-confetti": "^1.9.4",
+    "vite": "^7.3.1"
+  }
+}
